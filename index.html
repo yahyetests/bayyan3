@@ -1,6 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+
+<script>
+  // Paste your config object from Firebase here:
+  const firebaseConfig = {
+    apiKey: "YOUR-API-KEY",
+    authDomain: "YOUR-PROJECT-ID.firebaseapp.com",
+    projectId: "YOUR-PROJECT-ID",
+    appId: "YOUR-APP-ID",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  // Sign Up function
+  function signup() {
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(user => alert('Account created!'))
+      .catch(error => alert(error.message));
+  }
+
+  // Login function
+  function login() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    auth.signInWithEmailAndPassword(email, password)
+      .then(user => alert('Logged in!'))
+      .catch(error => alert(error.message));
+  }
+
+  // Logout function
+  function logout() {
+    auth.signOut();
+  }
+
+  // Track Auth State
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      document.getElementById("userStatus").innerText = `Logged in as: ${user.email}`;
+    } else {
+      document.getElementById("userStatus").innerText = "Not logged in";
+    }
+  });
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bayyan - Evidence Extraction Manager</title>
@@ -1188,3 +1237,4 @@
 </body>
 
 </html> 
+
