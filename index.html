@@ -290,6 +290,20 @@
     </style>
 </head>
 <body>
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    
+    <h2>Sign Up</h2>
+    <input type="email" id="signupEmail" placeholder="Email" />
+    <input type="password" id="signupPassword" placeholder="Password" />
+    <button onclick="signup()">Sign Up</button>
+    
+    <button onclick="logout()">Logout</button>
+    
+    <p id="userStatus"></p>
+
     <div id="root"></div>
     
     <!-- React and ReactDOM from CDN -->
@@ -1172,4 +1186,5 @@
         }
     </script>
 </body>
+
 </html> 
